@@ -48,7 +48,7 @@ class GAMIFICATION_BOL_Service
      */
     public function addBadge( $nome, $userId )
     {
-        $badge = new GAMIFICATION_BOL_Badge;
+        $badge = new GAMIFICATION_BOL_Badge();
         $badge->nome = $nome;
         $badge->userId = $userId;
 
