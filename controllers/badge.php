@@ -15,5 +15,6 @@ class GAMIFICATION_CTRL_Badge extends OW_ActionController {
         $myBadges = GAMIFICATION_BOL_Service::getInstance()->findListByUserId($userId);
 
         $this->assign("myBadges",$myBadges);
+        $this->assign("nuovo","ciao");
     }
 }
