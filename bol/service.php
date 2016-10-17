@@ -37,7 +37,7 @@ class GAMIFICATION_BOL_Service
 
     private function __construct()
     {
-        $this->recordDao = GAMIFICATION_BOL_BadgeDao::getInstance();
+        $this->badgeDao = GAMIFICATION_BOL_BadgeDao::getInstance();
     }
 
     /**
@@ -49,15 +49,15 @@ class GAMIFICATION_BOL_Service
     public function addBadge( $nome, $userId )
     {
         $badge = new GAMIFICATION_BOL_Badge();
-        $badge->nome = $nome;
-        $badge->userId = $userId;
+        $badge->nome = (string) $nome;
+        $badge->userId = (int) $userId;
 
         return $this->badgeDao->save($badge);
     }
 
     public function deleteBadge($id)
     {
-        $this->badgeDao->deleteById($id);
+        $this->badgeDao->deleteById((int) $id);
     }
     /**
      * Nomi dei badge di un utente
@@ -69,7 +69,8 @@ class GAMIFICATION_BOL_Service
         $badges = $this->badgeDao->findAll();
         $nomi = array();
         foreach ($badges as $badge) {
-            if($badge->userId === $id)
+            /*@var $badge GAMIFICATION_BOL_Badge*/
+            if($badge->userId == $id)
                 $nomi[] = $badge->nome;
         }
         return $nomi;

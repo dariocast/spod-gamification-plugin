@@ -1,5 +1,13 @@
-<ul>
+<link rel="import" href="{$components_url}bower_components/paper-card/paper-card.html">
+
+<div class="fab red">
     {foreach $myBadges as $badge}
-    <li>{$badge}</li>
+    {$badge}
     {/foreach}
-</ul>
+    <paper-ripple class="circle" recenters="">
+
+
+        <div id="background" class="style-scope paper-ripple"></div>
+        <div id="waves" class="style-scope paper-ripple"></div>
+    </paper-ripple>
+</div>

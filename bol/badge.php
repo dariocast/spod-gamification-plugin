@@ -17,10 +17,4 @@ class GAMIFICATION_BOL_Badge extends OW_Entity {
      * @var int
      */
     public $userId;
-
-    /**
-     * Immagine associata al badge
-     * @var string
-     */
-    public $image;
 }
