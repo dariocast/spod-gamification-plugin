@@ -32,7 +32,6 @@ class GAMIFICATION_CMP_Badge extends BASE_CLASS_Widget {
 
     public function onBeforeRender()
     {
-        $this->assign('user',$this->userId);
         $this->assign('myBadges',$this->myBadges);
     }
 }

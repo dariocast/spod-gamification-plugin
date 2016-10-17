@@ -59,13 +59,19 @@ class GAMIFICATION_BOL_Service
     {
         $this->badgeDao->deleteById($id);
     }
-
     /**
-     *
+     * Nomi dei badge di un utente
      * @return array
      */
     public function findListByUserId($userId)
     {
-        return $this->badgeDao->findListByUserId($userId);
+        $id = (int) $userId;
+        $badges = $this->badgeDao->findAll();
+        $nomi = array();
+        foreach ($badges as $badge) {
+            if($badge->userId === $id)
+                $nomi[] = $badge->nome;
+        }
+        return $nomi;
     }
 }

@@ -13,6 +13,13 @@
  */
 class GAMIFICATION_BOL_BadgeDao extends OW_BaseDao
 {
+    /**
+     * Constructor
+     */
+    protected function __construct()
+    {
+        parent::__construct();
+    }
 
     /**
      * Singleton instance.
@@ -23,7 +30,6 @@ class GAMIFICATION_BOL_BadgeDao extends OW_BaseDao
 
     /**
      * Returns an instance of class (singleton pattern implementation).
-     *
      * @return GAMIFICATION_BOL_BadgeDao
      */
     public static function getInstance()
@@ -42,7 +48,7 @@ class GAMIFICATION_BOL_BadgeDao extends OW_BaseDao
      */
     public function getDtoClassName()
     {
-        return 'GAMIFICATIO_BOL_Badge';
+        return 'GAMIFICATION_BOL_Badge';
     }
 
     /**
@@ -52,17 +58,5 @@ class GAMIFICATION_BOL_BadgeDao extends OW_BaseDao
     public function getTableName()
     {
         return OW_DB_PREFIX . 'gamification_badge';
-    }
-
-    /**
-     *
-     * @return array
-     */
-    public function findListByUserId($userId)
-    {
-        $example = new OW_Example();
-        $example->andFieldEqual("`userId`",$userId);
-
-        return $this->findListByExample($example);
     }
 }
