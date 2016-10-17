@@ -1,8 +1,14 @@
-<link rel="import" href="{$components_url}bower_components/paper-button/paper-button.html">
+<link rel="import" href="{$components_url}bower_components/paper-card/paper-card.html">
 
-<div>
-    {foreach $myBadges as $badge}
-    <paper-button raised>{$badge}</paper-button>
-    {/foreach}
+<style is="custom-style">
+    paper-card {
+        --paper-card-background-color : var(--google-green-100);
+        margin: 10px;
+    }
+</style>
 
-</div>
+{foreach $myBadges as $badge}
+<paper-card heading="{$badge}">
+    <div class="card-content">This is a badge</div>
+</paper-card>
+{/foreach}

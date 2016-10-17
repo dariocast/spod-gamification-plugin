@@ -11,10 +11,10 @@ class GAMIFICATION_CTRL_Badge extends OW_ActionController {
         $this->setPageHeading("Tutti i tuoi badge");
 
         $userId = OW::getUser()->getId();
-        var_dump($userId);
-        GAMIFICATION_BOL_Service::getInstance()->addBadge('nuovo', $userId);
+        //GAMIFICATION_BOL_Service::getInstance()->addBadge('nuovo', $userId);
         $myBadges = GAMIFICATION_BOL_Service::getInstance()->findListByUserId($userId);
 
         $this->assign("myBadges",$myBadges);
+        $this->assign('components_url', GAMIFICATION_COMPONENTS_URL);
     }
 }

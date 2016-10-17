@@ -15,9 +15,7 @@ class GAMIFICATION_CMP_Badge extends BASE_CLASS_Widget {
 
         //user id
         $this->userId =  $paramObject->additionalParamList['entityId'];
-        $this->myBadges =array(
-            '1','2','3','4'
-        );
+        $this->myBadges = GAMIFICATION_BOL_Service::getInstance()->findListByUserId($this->userId);
 
     }
     public static function getStandardSettingValueList() // If you redefine this method, you will be able to set default values for the standard widget settings.
@@ -32,6 +30,7 @@ class GAMIFICATION_CMP_Badge extends BASE_CLASS_Widget {
 
     public function onBeforeRender()
     {
+        $this->assign('components_url', GAMIFICATION_COMPONENTS_URL);
         $this->assign('myBadges',$this->myBadges);
     }
 }
