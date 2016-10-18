@@ -1,15 +1,16 @@
 <link rel="import" href="{$components_url}bower_components/paper-card/paper-card.html">
 
+{foreach $myBadges as $badge}
+
 <style is="custom-style">
     paper-card {
         --paper-card-header: {
-            background-color: #00E676;
-        };
-        margin: 10px;
+        background-color: {$badge->colore};
+    };
+    margin: 10px;
     }
 </style>
 
-{foreach $myBadges as $badge}
 <paper-card heading="{$badge->nome}">
     <div class="card-content">{$badge->descrizione}</div>
 </paper-card>

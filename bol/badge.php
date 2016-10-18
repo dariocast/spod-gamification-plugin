@@ -19,6 +19,12 @@ class GAMIFICATION_BOL_Badge extends OW_Entity {
     public $descrizione;
 
     /**
+     * Colore del badge
+     * @var string
+     */
+    public $colore;
+
+    /**
      * user id dell'utente che possiede il badge
      * @var int
      */

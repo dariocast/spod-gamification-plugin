@@ -11,12 +11,8 @@ class GAMIFICATION_CTRL_Badge extends OW_ActionController {
         $this->setPageHeading("Tutti i tuoi badge");
 
         $userId = OW::getUser()->getId();
-        if(GAMIFICATION_BOL_Service::getInstance()->getFlag()==false){
-            if(SPODPR_BOL_PrivateRoomDao::getInstance()->findAll()) {
-                GAMIFICATION_BOL_Service::getInstance()->addBadge('Creazione Privata','Hai creato un contenuto nella stanza privata' ,$userId);
-                GAMIFICATION_BOL_Service::getInstance()->setFlag();
-            }
-        }
+
+        GAMIFICATION_BOL_Service::getInstance()->addBadge('nuovo', 'ciao', '#00E676', $userId);
 
         $myBadges = GAMIFICATION_BOL_Service::getInstance()->findListByUserId($userId);
 

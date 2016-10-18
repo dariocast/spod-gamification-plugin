@@ -13,7 +13,6 @@ class GAMIFICATION_CMP_Badge extends BASE_CLASS_Widget {
     {
         parent::__construct();
 
-        //user id
         $this->userId =  $paramObject->additionalParamList['entityId'];
         $this->myBadges = GAMIFICATION_BOL_Service::getInstance()->findListByUserId($this->userId);
 
