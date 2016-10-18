@@ -34,10 +34,12 @@ class GAMIFICATION_BOL_Service
      * @var GAMIFICATION_BOL_BadgeDao
      */
     private $badgeDao;
+    private $flag;
 
     private function __construct()
     {
         $this->badgeDao = GAMIFICATION_BOL_BadgeDao::getInstance();
+        $this->flag = false;
     }
 
     /**
@@ -46,10 +48,11 @@ class GAMIFICATION_BOL_Service
      * @param string $userId
      * @return GAMIFICATION_BOL_Badge
      */
-    public function addBadge( $nome, $userId )
+    public function addBadge( $nome, $descrizione, $userId )
     {
         $badge = new GAMIFICATION_BOL_Badge();
         $badge->nome = (string) $nome;
+        $badge->descrizione = (string) $descrizione;
         $badge->userId = (int) $userId;
 
         return $this->badgeDao->save($badge);
@@ -66,13 +69,17 @@ class GAMIFICATION_BOL_Service
     public function findListByUserId($userId)
     {
         $id = (int) $userId;
-        $badges = $this->badgeDao->findAll();
-        $nomi = array();
-        foreach ($badges as $badge) {
-            /*@var $badge GAMIFICATION_BOL_Badge*/
-            if($badge->userId == $id)
-                $nomi[] = $badge->nome;
-        }
-        return $nomi;
+        $example = new OW_Example();
+        $example->andFieldEqual('userId',$id);
+
+        $badges = $this->badgeDao->findListByExample($example);
+        return $badges;
+    }
+
+    public function setFlag() {
+        $this->flag = true;
+    }
+    public function getFlag() {
+        return $this->flag;
     }
 }
