@@ -75,6 +75,7 @@ class GAMIFICATION_BOL_Service
         $id = (int) $userId;
         $example = new OW_Example();
         $example->andFieldEqual('userId',$id);
+        $example->setOrder("`colore` DESC");
 
         $badges = $this->badgeDao->findListByExample($example);
         return $badges;

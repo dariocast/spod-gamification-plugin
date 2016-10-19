@@ -6,14 +6,17 @@
  * Time: 15:01
  */
 class GAMIFICATION_CTRL_Badge extends OW_ActionController {
+    private $checker;
+
     public function index() {
-        $this->setPageTitle("Badge");
-        $this->setPageHeading("Tutti i tuoi badge");
+        $this->setPageTitle(OW::getLanguage()->text('gamification','index_page_title'));
+        $this->setPageHeading(OW::getLanguage()->text('gamification','index_page_heading'));
 
         $userId = OW::getUser()->getId();
-
-        GAMIFICATION_BOL_Service::getInstance()->addBadge('nuovo', 'ciao', '#00E676', $userId);
-
+        $this->checker = new GAMIFICATION_CLASS_PrivateRoomChecker();
+        $this->checker->checkLinks($userId);
+        $this->checker->checkDatalet($userId);
+        $this->checker->checkText($userId);
         $myBadges = GAMIFICATION_BOL_Service::getInstance()->findListByUserId($userId);
 
         $this->assign("myBadges",$myBadges);

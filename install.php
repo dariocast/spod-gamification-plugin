@@ -6,6 +6,10 @@
  * Time: 13:05
  */
 
+BOL_LanguageService::getInstance()->addPrefix('gamification', 'Gamification');
+OW::getLanguage()->importPluginLangs(OW::getPluginManager()->getPlugin('gamification')->getRootDir().'langs.zip', 'gamification');
+
+
 $query = "CREATE TABLE IF NOT EXISTS `" . OW_DB_PREFIX . "gamification_badge` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(255) NOT NULL,
